@@ -18,6 +18,7 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var searchController = require('./controllers/search');
 
 /**
  * API keys + Passport configuration.
@@ -99,6 +100,7 @@ app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
+app.get('/search', searchController.search);
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
