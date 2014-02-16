@@ -2,11 +2,14 @@ extends layout
 
 block content
   h1 Welcome to GroupLove!
-  img(src='http://png-1.findicons.com/files/icons/977/rrze/720/user_phd_group.png', height='400px')
+  a(href='/search')
+    img(src='http://png-1.findicons.com/files/icons/977/rrze/720/user_phd_group.png', height='400px')
 
   if user
     p.lead
-      | Go ahead and get started
+      | Go ahead and 
+      a(href='/search')
+        | get started
     .alert.alert-success.animated.flipInX
       i.fa.fa-check
       strong Success!
