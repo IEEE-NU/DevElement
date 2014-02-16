@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 
 var groupSchema = new mongoose.Schema({
-  numbers: { type: Array},
+  members: { type: Array},
   course: { type: String},
   meetingTime: { type: String},
   meetingDate: {type: String},

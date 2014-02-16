@@ -6,25 +6,23 @@ block content
 
   form.form-horizontal(role='form', method='POST', action='/submitGroup')
     .form-group
-        input.form-control(type='hidden', name='_csrf', value=token)
-    .form-group
-      label(class='col-sm-2 control-label', for='course') What course are you making a group for?
+      label.col-sm-2.control-label(for='course') What course are you making a group for?
       .col-sm-8
         input.form-control(type='text', name='course', id='course', autofocus=true)
     .form-group
-      label(class='col-sm-2 control-label', for='location') What location suits you best?
+      label.col-sm-2.control-label(for='location') What location suits you best?
       .col-sm-8
         input.form-control(type='text', name='location', id='location')
     .form-group
-      label(class='col-sm-2 control-label', name='meetingTime') What time of day (in 24hr time)?
+      label.col-sm-2.control-label(for='meetingTime') What time of day (in 24hr time)?
       .col-sm-8
         input.form-control(type='text', name='meetingTime')
     .form-group
-      label(class='col-sm-2 control-label', name='meetingDate') What day of the week?
+      label.col-sm-2.control-label(for='meetingDate') What day of the week?
       .col-sm-8
         input.form-control(type='text', name='meetingDate')
     .form-group
-        input.form-control(type='hidden', name='_csrf', value="token") 
+        input.form-control(type='hidden', name='_csrf', value=token)
     .form-group
       .col-sm-offset-2.col-sm-8
         button.btn.btn-default(type='submit')

@@ -11,12 +11,16 @@ exports.makeGroup = function(req,res){
 };
 
 exports.submitGroup = function(req,res){
+	console.log(req.body);
 	var newGroup = new Group({
 		members: req.user.id,
-		course: req.params.course,
-		meetingLocation: req.params.location,
-		meetingTime: req.params.meetingTime,
-		meetingDate: req.params.meetingDate
+		course: req.body.course,
+		meetingTime: req.body.meetingTime,
+		meetingDate: req.body.meetingDate,
+		meetingLocation: req.body.location
 	});
-	newGroup.save();
+	newGroup.save(function(err) {
+		req.flash('success', 'Group created.');
+		res.redirect('/');
+	});
 };
