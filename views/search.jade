@@ -4,7 +4,7 @@ block content
   .pageheader
     h3 GroupSearch
 
-  form.form-horizontal(role='form', method='POST')
+  form.form-horizontal(role='form', method='POST', action='/submitSearch')
     .form-group
         input.form-control(type='hidden', name='_csrf', value=token)
     .form-group

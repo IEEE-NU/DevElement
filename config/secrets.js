@@ -1,5 +1,5 @@
 module.exports = {
-  db: 'localhost',
+  db: 'localhost/grouplove',
 
   sessionSecret: "Your Session Secret goes here",
 

@@ -19,6 +19,7 @@ var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 var searchController = require('./controllers/search');
+var groupController = require('./controllers/group');
 
 /**
  * API keys + Passport configuration.
@@ -100,7 +101,6 @@ app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
-app.get('/search', searchController.search);
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
@@ -124,6 +124,12 @@ app.get('/api/tumblr', passportConf.isAuthenticated, passportConf.isAuthorized, 
 app.get('/api/facebook', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getFacebook);
 app.get('/api/github', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getGithub);
 app.get('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getTwitter);
+
+// Our stuff:
+app.get('/search', searchController.search);
+app.post('/submitSearch',searchController.submitSearch);
+app.get('/makeGroup', groupController.makeGroup);
+app.post('/submitGroup', groupController.submitGroup);
 
 /**
  * OAuth routes for sign-in.

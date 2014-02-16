@@ -3,3 +3,8 @@ exports.search = function(req,res){
 		title: 'Search'
 	});
 };
+
+exports.submitSearch = function(req,res){
+	req.params
+
+};
