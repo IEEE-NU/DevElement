@@ -26,6 +26,6 @@ exports.submitGroup = function(req,res){
 	});
 	newGroup.save(function(err, groups) {
 		req.flash('success', 'Group created.');
-		res.redirect('/');
+		res.redirect('/makeGroup');
 	});
 };
