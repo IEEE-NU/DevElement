@@ -2,7 +2,7 @@ extends layout
 
 block content
   .pageheader
-    h3 GroupSearch
+    h3 Make Group
 
   form.form-horizontal(role='form', method='POST', action='/submitGroup')
     .form-group
@@ -27,3 +27,9 @@ block content
       .col-sm-offset-2.col-sm-8
         button.btn.btn-default(type='submit')
           | Submit
+
+  h3 Current groups
+  ol
+    for group in groups
+        li
+          p Course: #{group.course}
