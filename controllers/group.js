@@ -4,13 +4,15 @@ var _ = require('underscore');
 var User = require('../models/User');
 var Group = require('../models/Group');
 var Group = mongoose.model('Group');
+var daysOfWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 
 exports.makeGroup = function(req,res){
 	Group.find(function(err, groups){
 		console.log(groups)
 		res.render('makeGroup', {
 			title: 'Make Group',
-			groups: groups
+			groups: groups,
+			daysOfWeek: daysOfWeek
 		});
 	});
 };
@@ -21,9 +23,9 @@ exports.submitGroup = function(req,res){
 		members: req.user.id,
 		course: req.body.course,
 		meetingTime: req.body.meetingTime,
-		meetingDate: req.body.meetingDate,
-		meetingLocation: req.body.location
+		meetingDate: req.body.meetingDate
 	});
+	newGroup.meetingLocation.push(req.body.location);
 	newGroup.save(function(err, groups) {
 		req.flash('success', 'Group created.');
 		res.redirect('/makeGroup');

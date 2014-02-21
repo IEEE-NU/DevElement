@@ -7,7 +7,7 @@ var groupSchema = new mongoose.Schema({
   course: { type: String},
   meetingTime: { type: String},
   meetingDate: {type: String},
-  meetingLocation: {type: String}
+  meetingLocation: [String]
 });
 
 module.exports = mongoose.model('Group', groupSchema);
