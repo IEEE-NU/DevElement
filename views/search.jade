@@ -8,9 +8,9 @@ block content
     .form-group
         input.form-control(type='hidden', name='_csrf', value=token)
     .form-group
-      label(class='col-sm-2 control-label', for='class') What class do you need a group for?
+      label(class='col-sm-2 control-label', for='course') What class do you need a group for?
       .col-sm-8
-        input.form-control(type='text', name='class', id='class', autofocus=true)
+        input.form-control(type='text', name='course', id='course', autofocus=true)
     .form-group
       label(class='col-sm-2 control-label', for='location') What location suits you best?
       .col-sm-8
@@ -21,3 +21,15 @@ block content
       .col-sm-offset-2.col-sm-8
         button.btn.btn-default(type='submit')
           | Submit
+
+  h3 Results
+  ol
+      li: p Course:
+          b  #{groups.course}
+          ul
+            li: p Location:
+              b  #{groups.meetingLocation}
+            li: p Meeting Time:
+              b  #{groups.meetingTime}
+              |  on 
+              b  #{groups.meetingDate}
