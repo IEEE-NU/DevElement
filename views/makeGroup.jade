@@ -4,47 +4,46 @@ block content
   .pageheader
     h3 Make Group
 
-  form.form-horizontal(role='form', method='POST', action='/submitGroup')
-    .form-group
-      label.col-sm-2.control-label(for='course') What course are you making a group for?
-      .col-sm-8
-        input.form-control(type='text', name='course', id='course', autofocus=true)
-    .form-group
-      label.col-sm-2.control-label(for='location') What location suits you best?
-      .col-sm-8
-        input.form-control(type='text', name='location', id='location')
-    .form-group
-      label.col-sm-2.control-label(for='meetingTime') What time of day (in 24hr time)?
-      .col-sm-8
-        input.form-control(type='text', name='meetingTime')
-    .form-group
-      label.col-sm-2.control-label(for='meetingDate') What day of the week?
-      .col-sm-8
-        each item in daysOfWeek
-          input(type='radio', name='meetingDate', value='#{item}')
-          | #{item}
-          br
-    .form-group
-        input.form-control(type='hidden', name='_csrf', value=token)
-    .form-group
-      .col-sm-offset-2.col-sm-8
-        button.btn.btn-default(type='submit')
-          | Submit
-
-
+  if !user
+    h3
+      a(href='/login') Please login to use GroupLove!
+  else
+    form.form-horizontal(role='form', method='POST', action='/submitGroup')
+      .form-group
+        label.col-sm-2.control-label(for='course') What course are you making a group for?
+        .col-sm-8
+          input.form-control(type='text', name='course', id='course', autofocus=true)
+      .form-group
+        label.col-sm-2.control-label(for='location') What location suits you best?
+        .col-sm-8
+          input.form-control(type='text', name='location', id='location')
+      .form-group
+        label.col-sm-2.control-label(for='meetingTime') What time of day (in 24hr time)?
+        .col-sm-8
+          input.form-control(type='text', name='meetingTime')
+      .form-group
+        label.col-sm-2.control-label(for='meetingDate') What day of the week?
+        .col-sm-8
+          each item in daysOfWeek
+            input(type='checkbox', name='meetingDate', value='#{item}')
+            |  #{item}
+            br
+      .form-group
+          input.form-control(type='hidden', name='_csrf', value=token)
+      .form-group
+        .col-sm-offset-2.col-sm-8
+          button.btn.btn-default(type='submit')
+            | Submit
 
   h3 Current groups
   ol
     for group in groups
-        li
-          p Course:
+        li: p Course:
             b  #{group.course}
             ul
-              li
-                p Location:
-                  b #{group.meetingLocation}
-              li
-                p Meeting Time:
-                  b #{group.meetingTime}
-                  |  on 
-                  b #{group.meetingDate}
+              li: p Location:
+                b  #{group.meetingLocation}
+              li: p Meeting Time:
+                b  #{group.meetingTime}
+                |  on 
+                b #{group.meetingDate}

@@ -28,6 +28,7 @@ exports.submitGroup = function(req,res){
 	newGroup.meetingLocation.push(req.body.location);
 	newGroup.save(function(err, groups) {
 		req.flash('success', 'Group created.');
+		req.session.messages = ['foo'];
 		res.redirect('/makeGroup');
 	});
 };
