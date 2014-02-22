@@ -19,7 +19,6 @@ exports.makeGroup = function(req,res){
 };
 
 exports.submitGroup = function(req,res){
-	console.log(req.body);
 	var newGroup = new Group({
 		members: req.user.id,
 		course: req.body.course,

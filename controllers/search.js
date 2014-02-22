@@ -6,14 +6,16 @@ var Group = require('../models/Group');
 var Group = mongoose.model('Group');
 
 exports.search = function(req,res){
-	Group.findOne({'course':'EECS 211'}, 'course meetingLocation meetingTime meetingDate', function(err,group){
+	res.render('search',{
+	title: 'Search'
+	});
+};
+
+exports.submitSearch = function(req,res){
+	Group.findOne({'course':req.body.course}, 'course meetingLocation meetingTime meetingDate', function(err,group){
 		res.render('search',{
 		title: 'Search',
 		groups: group
 	});
 	});
-};
-
-exports.submitSearch = function(req,res){
-	console.log('hi');
 };
