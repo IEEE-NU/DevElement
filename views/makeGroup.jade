@@ -1,6 +1,14 @@
 extends layout
 
+
+
 block content
+  if success.length
+    .alert.alert-success.animated.flipInX
+        i.fa.fa-check
+        strong Success!
+        |  Group created!
+
   .pageheader
     h3 Make Group
 
