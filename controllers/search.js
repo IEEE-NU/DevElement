@@ -15,4 +15,5 @@ exports.search = function(req,res){
 };
 
 exports.submitSearch = function(req,res){
+	console.log('hi');
 };
