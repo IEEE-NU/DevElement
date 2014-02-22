@@ -7,15 +7,23 @@ var Group = mongoose.model('Group');
 
 exports.search = function(req,res){
 	res.render('search',{
-	title: 'Search'
+		title: 'Search',
+		error: req.flash('error')
 	});
 };
 
 exports.submitSearch = function(req,res){
-	Group.findOne({'course':req.body.course}, 'course meetingLocation meetingTime meetingDate', function(err,group){
-		res.render('search',{
-		title: 'Search',
-		groups: group
-	});
+	Group.findOne({'course':req.body.course}, function(err,group){
+			console.log(group);
+		if (group === null){
+			req.flash('error', 'Group created.');
+			res.redirect('/search');
+			console.log('hi');
+		} else {
+			res.render('search',{
+				title: 'Search',
+				groups: group
+			});
+		}
 	});
 };

@@ -20,15 +20,22 @@ block content
         button.btn.btn-default(type='submit')
           | Submit
 
-  if typeof(groups) !== 'undefined'
-    h3 Results
-    ol
-        li: p Course:
-            b  #{groups.course}
-            ul
-              li: p Location:
-                b  #{groups.meetingLocation}
-              li: p Meeting Time:
-                b  #{groups.meetingTime}
-                |  on 
-                b  #{groups.meetingDate}
+  if typeof(error) !== 'undefined' && error.length
+    .alert.alert-danger.animated.flipInX
+        i.fa.fa-warning
+        strong Uh-oh!
+        |  No groups found
+
+  if groups
+    if typeof(groups) !== 'undefined'
+      h3 Results
+      ol
+          li: p Course:
+              b  #{groups.course}
+              ul
+                li: p Location:
+                  b  #{groups.meetingLocation}
+                li: p Meeting Time:
+                  b  #{groups.meetingTime}
+                  |  on 
+                  b  #{groups.meetingDate}
