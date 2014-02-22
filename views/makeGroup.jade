@@ -1,7 +1,5 @@
 extends layout
 
-
-
 block content
   if success.length
     .alert.alert-success.animated.flipInX
@@ -33,7 +31,7 @@ block content
         label.col-sm-2.control-label(for='meetingDate') What day of the week?
         .col-sm-8
           each item in daysOfWeek
-            input(type='checkbox', name='meetingDate', value='#{item}')
+            input(type='checkbox', name='meetingDate', value=' #{item}')
             |  #{item}
             br
       .form-group
@@ -53,5 +51,5 @@ block content
                 b  #{group.meetingLocation}
               li: p Meeting Time:
                 b  #{group.meetingTime}
-                |  on 
+                |  on
                 b #{group.meetingDate}
