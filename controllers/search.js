@@ -14,7 +14,6 @@ exports.search = function(req,res){
 
 exports.submitSearch = function(req,res){
 	Group.findOne({'course':req.body.course}, function(err,group){
-			console.log(group);
 		if (group === null){
 			req.flash('error', 'Group created.');
 			res.redirect('/search');
