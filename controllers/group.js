@@ -20,12 +20,12 @@ exports.makeGroup = function(req,res){
 
 exports.submitGroup = function(req,res){
 	var newGroup = new Group({
-		members: req.user.id,
 		course: req.body.course,
 		meetingTime: req.body.meetingTime,
 		meetingDate: req.body.meetingDate
 	});
 	newGroup.meetingLocation.push(req.body.location);
+	newGroup.members.push(req.user);
 	newGroup.save(function(err, groups) {
 		req.flash('success', 'Group created.');
 		res.redirect('/makeGroup');

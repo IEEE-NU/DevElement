@@ -127,7 +127,7 @@ app.get('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized,
 
 // Our stuff:
 app.get('/search', searchController.search);
-app.post('/submitSearch',searchController.submitSearch);
+app.post('/search',searchController.submitSearch);
 app.get('/makeGroup', groupController.makeGroup);
 app.post('/submitGroup', groupController.submitGroup);
 

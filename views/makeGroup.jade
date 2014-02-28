@@ -53,3 +53,6 @@ block content
                 b  #{group.meetingTime}
                 |  on
                 b #{group.meetingDate}
+              li: p Members:
+                for item in group.members
+                  b #{item.profile.name}
