@@ -19,6 +19,7 @@ exports.makeGroup = function(req,res){
 };
 
 exports.submitGroup = function(req,res){
+	// implement error checking
 	var newGroup = new Group({
 		course: req.body.course,
 		meetingTime: req.body.meetingTime,

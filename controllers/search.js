@@ -33,3 +33,7 @@ exports.submitSearch = function(req,res){
 		}
 	});
 };
+
+exports.addMeToGroup = function(req,res){
+	console.log(req.params.course);
+};

@@ -45,8 +45,7 @@ block content
         for item in groups
           li: p Course:
               b  #{item.course}
-              button.btn.btn-default(type='button', onclick='')
-                | me
+              a.button.btn.btn-default(href='/addMeToGroup-#{item.course}' type='button' style='margin-left:10px') me
               ul
                 li: p Location:
                   b  #{item.meetingLocation}
