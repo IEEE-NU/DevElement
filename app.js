@@ -130,7 +130,7 @@ app.get('/search', searchController.search);
 app.post('/search', searchController.submitSearch);
 app.get('/makeGroup', groupController.makeGroup);
 app.post('/submitGroup', groupController.submitGroup);
-app.get('/addMeToGroup-:course', searchController.addMeToGroup);
+app.get('/addMeToGroup-:id', searchController.addMeToGroup);
 
 
 /**

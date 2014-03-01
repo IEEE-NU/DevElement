@@ -12,6 +12,7 @@ exports.search = function(req,res){
 		title: 'Search',
 		daysOfWeek: daysOfWeek,
 		error: req.flash('error'),
+		success: req.flash('success'),
 		groups: group
 	});
 };
@@ -36,4 +37,16 @@ exports.submitSearch = function(req,res){
 
 exports.addMeToGroup = function(req,res){
 	console.log(req.params.course);
+	Group.findOne({'_id':req.params.id}, function(err,group){
+		group.members.push(req.user);
+		group.save();
+		req.flash('success', 'Group created.');
+		res.render('search',{
+			title: 'Search',
+			daysOfWeek: daysOfWeek,
+			groups: group,
+			error: req.flash('error'),
+			success: req.flash('success')
+		});
+	});
 };

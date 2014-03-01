@@ -38,6 +38,13 @@ block content
         |  No groups found 
         a(href='/makeGroup') Click here to make a group.
 
+
+  if typeof(success) !== 'undefined' && success.length
+    .alert.alert-success.animated.flipInX
+        i.fa.fa-check
+        strong Yay!!
+        |  You were added to the selected group
+
   if groups.length
     if typeof(groups) !== 'undefined'
       h3 Results
@@ -45,7 +52,7 @@ block content
         for item in groups
           li: p Course:
               b  #{item.course}
-              a.button.btn.btn-default(href='/addMeToGroup-#{item.course}' type='button' style='margin-left:10px') me
+              a.button.btn.btn-default(href='/addMeToGroup-#{item.id}' type='button' style='margin-left:10px') Add me to this group
               ul
                 li: p Location:
                   b  #{item.meetingLocation}
@@ -55,4 +62,4 @@ block content
                   b  #{item.meetingDate}
                 li: p Members:
                   for i in item.members
-                    b #{i.profile.name}
+                    b #{i.email}  
