@@ -117,11 +117,14 @@ exports.getAccount = function(req, res) {
 exports.postUpdateProfile = function(req, res, next) {
   User.findById(req.user.id, function(err, user) {
     if (err) return next(err);
-    user.email = req.body.email || '';
     user.profile.name = req.body.name || '';
+    user.email = req.body.email || '';
+    user.profile.phone = req.body.phone || '';
     user.profile.gender = req.body.gender || '';
+    user.profile.major = req.body.major || '';
+    user.profile.year = req.body.year || '';
     user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
+    // user.profile.website = req.body.website || '';
 
     user.save(function(err) {
       if (err) return next(err);
