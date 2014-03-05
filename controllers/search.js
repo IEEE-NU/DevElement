@@ -13,30 +13,31 @@ exports.search = function(req,res){
 		daysOfWeek: daysOfWeek,
 		error: req.flash('error'),
 		success: req.flash('success'),
-		groups: group
+		groups: group,
+		user: req.user
 	});
 };
 
 exports.submitSearch = function(req,res){
-	Group.find({ $or:[{'meetingLocation':req.body.meetingLocation}, {'course':req.body.course}, {'meetingTime':req.body.meetingTime}] }, function(err,group){
+	Group.find({ $or:[{'meetingLocation':req.body.meetingLocation}, {'course':req.body.course}, {'meetingTime':req.body.meetingTime}, {'meetingDate':req.body.meetingDate}] }, function(err,group){
 		if (group == ""){
 			req.flash('error', 'Group created.');
 			res.redirect('/search');
-			console.log('hi');
 		} else {
+			console.log(req.user);
+			console.log(group);
 			res.render('search',{
 				title: 'Search',
 				daysOfWeek: daysOfWeek,
 				groups: group,
-				error: req.flash('error')
+				error: req.flash('error'),
+				user: req.user
 			});
-			console.log('bye');
 		}
 	});
 };
 
 exports.addMeToGroup = function(req,res){
-	console.log(req.params.course);
 	Group.findOne({'_id':req.params.id}, function(err,group){
 		group.members.push(req.user);
 		group.save();
@@ -46,7 +47,8 @@ exports.addMeToGroup = function(req,res){
 			daysOfWeek: daysOfWeek,
 			groups: group,
 			error: req.flash('error'),
-			success: req.flash('success')
+			success: req.flash('success'),
+			user: req.user
 		});
 	});
 };

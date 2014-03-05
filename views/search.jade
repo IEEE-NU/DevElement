@@ -52,7 +52,12 @@ block content
         for item in groups
           li: p Course:
               b  #{item.course}
-              a.button.btn.btn-default(href='/addMeToGroup-#{item.id}' type='button' style='margin-left:10px') Add me to this group
+              - var display = true
+              for j in item.members
+                if user.email == j.email
+                  - display = false
+              if display
+                a.button.btn.btn-default(href='/addMeToGroup-#{item.id}' type='button' style='margin-left:10px') Add me to this group
               ul
                 li: p Location:
                   b  #{item.meetingLocation}
@@ -62,4 +67,20 @@ block content
                   b  #{item.meetingDate}
                 li: p Members:
                   for i in item.members
-                    b #{i.email}  
+                    b #{i.email} 
+  else
+    if typeof(groups) !== 'undefined' && groups !== ""
+      h3 Results
+      ol
+          li: p Course:
+              b  #{groups.course}
+              ul
+                li: p Location:
+                  b  #{groups.meetingLocation}
+                li: p Meeting Time:
+                  b  #{groups.meetingTime}
+                  |  on 
+                  b  #{groups.meetingDate}
+                li: p Members:
+                  for i in groups.members
+                    b #{i.email} 
