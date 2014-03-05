@@ -13,10 +13,13 @@ var userSchema = new mongoose.Schema({
   tokens: Array,
 
   profile: {
-    name: { type: String, default: '' },
+    name: { type: String, default: 'Anonymous' },
+    phone: { type: String, default: ''},
     gender: { type: String, default: '' },
+    major: { type: String, default: ''},
+    year: { type: String, default: ''},
     location: { type: String, default: '' },
-    website: { type: String, default: '' },
+    // website: { type: String, default: '' },
     picture: { type: String, default: '' }
   }
 });
