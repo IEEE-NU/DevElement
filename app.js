@@ -3,7 +3,7 @@
  */
 
 var express = require('express');
-var MongoStore = require('connect-mongo');//(express);
+var MongoStore = require('connect-mongo')(express);
 var flash = require('express-flash');
 var path = require('path');
 var mongodb = require('mongodb');
