@@ -21,7 +21,7 @@ exports.search = function(req,res){
 };
 
 exports.submitSearch = function(req,res){
-	Group.find({ $or:[{'meetingLocation':req.body.meetingLocation}, {'course':req.body.course}, {'meetingTime':req.body.meetingTime}, {'meetingDate':req.body.meetingDate}] }, function(err,group){
+	Group.find({ $or:[{'meetingLocation':req.body.meetingLocation}, {'course':req.body.course}, {'meetingTime':req.body.meetingTime}] }, function(err,group){
 		if (group == ""){
 			req.flash('error', 'Group created.');
 			res.redirect('/search');

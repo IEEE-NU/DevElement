@@ -5,8 +5,7 @@ var crypto = require('crypto');
 var groupSchema = new mongoose.Schema({
   members: { type: Array},
   course: { type: String},
-  meetingTime: { type: String},
-  meetingDate: {type: String},
+  meetingTime: { type: Array},
   meetingLocation: [String]
 });
 

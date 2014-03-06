@@ -24,9 +24,9 @@ exports.submitGroup = function(req,res){
 	// implement error checking
 	var newGroup = new Group({
 		course: req.body.course,
-		meetingTime: req.body.meetingTime,
-		meetingDate: req.body.meetingDate
 	});
+	newGroup.meetingTime.push(req.body.meetingDate);
+	newGroup.meetingTime.push(req.body.meetingTime);
 	newGroup.meetingLocation.push(req.body.location);
 	newGroup.members.push(req.user);
 	newGroup.save(function(err, groups) {
