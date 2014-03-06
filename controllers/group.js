@@ -4,12 +4,11 @@ var _ = require('underscore');
 var User = require('../models/User');
 var Group = require('../models/Group');
 var Group = mongoose.model('Group');
-var timesOfDay = ["12:00 AM","1:00 AM","2:00 AM","3:00 AM", "4:00 AM", "5:00 AM", "6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM"];
+var timesOfDay = ["10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM"];
 var daysOfWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 
 exports.makeGroup = function(req,res){
 	Group.find(function(err, groups){
-		console.log(groups)
 		res.render('makeGroup', {
 			title: 'Make Group',
 			groups: groups,

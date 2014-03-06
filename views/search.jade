@@ -6,30 +6,65 @@ block content
 
   form.form-horizontal(role='form', method='POST', action='/search')
     .form-group
-      label(class='col-sm-2 control-label', for='course') What class do you need a group for?
-      .col-sm-8
+      label(class='col-md-2 control-label', for='course') What class do you need a group for?
+      .col-md-8
         input.form-control(type='text', name='course', id='course', autofocus=true)
     .form-group
-      label(class='col-sm-2 control-label', for='meetingLocation') What location suits you best?
-      .col-sm-8
+      label(class='col-md-2 control-label', for='meetingLocation') What location suits you best?
+      .col-md-8
         input.form-control(type='text', name='meetingLocation', id='meetingLocation')
-    .form-group
-      label.col-sm-2.control-label(for='meetingTime') What time of day can you meet (in 24hr time)?
-      .col-sm-8
-        select(name='meetingTime')
-          each item in timesOfDay
-            option(value=' #{item}', name='meetingTime') #{item}
-    .form-group
-      label.col-sm-2.control-label(for='meetingDate') What days of the week can you meet?
-      .col-sm-8
-        each item in daysOfWeek
-          input(type='checkbox', name='meetingDate', value=' #{item}')
-          |  #{item}
-          br
+    .row
+      .form-group
+        label.col-md-2.col-sm-2.col-xs-2.control-label(for='meetingDate') What four times work best?   
+        .col-md-2.col-sm-2.col-xs-2
+          each item in daysOfWeek
+            input(type='checkbox', name='meetingDate1', value=' #{item}')
+            |  #{item}
+            br
+        .form-group
+          .col-md-2.col-sm-2.col-xs-2
+            each item in daysOfWeek
+              input(type='checkbox', name='meetingDate2', value=' #{item}')
+              |  #{item}
+              br
+          .form-group
+            .col-md-2.col-sm-2.col-xs-2
+              each item in daysOfWeek
+                input(type='checkbox', name='meetingDate3', value=' #{item}')
+                |  #{item}
+                br        
+            .form-group
+              .col-md-2.col-sm-2.col-xs-2
+                each item in daysOfWeek
+                  input(type='checkbox', name='meetingDate4', value=' #{item}')
+                  |  #{item}
+                  br
+    .row  
+      .form-group
+        label.col-md-2.col-sm-2.col-xs-2.control-label(for='meetingTime')
+        .col-md-2.col-sm-2.col-xs-2
+          select(name='meetingTime1')
+            each item in timesOfDay
+              option(value=' #{item}', name='meetingTime1') #{item}
+        .form-group
+          .col-md-2.col-sm-2.col-xs-2
+            select(name='meetingTime2')
+              each item in timesOfDay
+                option(value=' #{item}', name='meetingTime2') #{item}
+          .form-group
+            .col-md-2.col-sm-2.col-xs-2
+              select(name='meetingTime3')
+                each item in timesOfDay
+                  option(value=' #{item}', name='meetingTime3') #{item}
+            .form-group
+              .col-md-2.col-sm-2.col-xs-2
+                select(name='meetingTime4')
+                  each item in timesOfDay
+                    option(value=' #{item}', name='meetingTime4') #{item}
     .form-group
         input.form-control(type='hidden', name='_csrf', value=token) 
     .form-group
-      .col-sm-offset-2.col-sm-8
+      .col-md-offset-2.col-md-8
         button.btn.btn-default(type='submit')
           | Submit
 
@@ -49,7 +84,8 @@ block content
 
   if groups.length
     if typeof(groups) !== 'undefined'
-      h3 Results
+      h3 Best Results
+      h5 To see more results, use only the class field.
       ol
         for item in groups
           li: p Course:
@@ -72,7 +108,8 @@ block content
                     b  #{i.email} 
   else
     if typeof(groups) !== 'undefined' && groups !== ""
-      h3 Results
+      h3 Best Results
+      h5 To see more results, use only the class field.
       ol
           li: p Course:
               b  #{groups.course}
