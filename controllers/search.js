@@ -10,7 +10,7 @@ var group = "";
 
 exports.search = function(req,res){
 	res.render('search',{
-		title: 'Search',
+		title: 'Find Group',
 		daysOfWeek: daysOfWeek,
 		error: req.flash('error'),
 		success: req.flash('success'),
@@ -29,7 +29,7 @@ exports.submitSearch = function(req,res){
 			console.log(req.user);
 			console.log(group);
 			res.render('search',{
-				title: 'Search',
+				title: 'Find Group',
 				daysOfWeek: daysOfWeek,
 				groups: group,
 				error: req.flash('error'),
@@ -46,7 +46,7 @@ exports.addMeToGroup = function(req,res){
 		group.save();
 		req.flash('success', 'Group created.');
 		res.render('search',{
-			title: 'Search',
+			title: 'Find Group',
 			daysOfWeek: daysOfWeek,
 			groups: group,
 			error: req.flash('error'),
