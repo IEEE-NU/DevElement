@@ -3,7 +3,7 @@
  */
 
 var express = require('express');
-var MongoStore = require('connect-mongo')(express);
+var MongoStore = require('connect-mongo');//(express);
 var flash = require('express-flash');
 var path = require('path');
 var mongodb = require('mongodb');
@@ -33,7 +33,6 @@ var passportConf = require('./config/passport');
  * Create Express server.
  */
 
-var app = express();
 
 /**
  * Mongoose configuration.
@@ -45,6 +44,7 @@ mongoose.connection.on('error', function() {
   console.error('✗ MongoDB Connection Error. Please make sure MongoDB is running.');
 });
 
+var app = express();
 /**
  * Express configuration.
  */
