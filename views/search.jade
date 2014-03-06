@@ -16,7 +16,9 @@ block content
     .form-group
       label.col-sm-2.control-label(for='meetingTime') What time of day can you meet (in 24hr time)?
       .col-sm-8
-        input.form-control(type='text', name='meetingTime')
+        select(name='meetingTime')
+          each item in timesOfDay
+            option(value=' #{item}', name='meetingTime') #{item}
     .form-group
       label.col-sm-2.control-label(for='meetingDate') What days of the week can you meet?
       .col-sm-8
