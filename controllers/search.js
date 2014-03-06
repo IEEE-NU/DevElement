@@ -25,14 +25,20 @@ exports.submitSearch = function(req,res){
 		if (group == ""){
 			if (req.body.course != ""){
 				Group.find( {'course':req.body.course},  function(err,thing){
-					res.render('search',{
+					if (thing == ""){
+						req.flash('error', 'Group created.');
+						res.redirect('/search');
+					}
+					else{
+						res.render('search',{
 						title: 'Find Group',
 						daysOfWeek: daysOfWeek,
 						groups: thing,
 						error: req.flash('error'),
 						user: req.user,
 						timesOfDay: timesOfDay
-					});
+						});
+					}
 				});
 			}
 			else{
