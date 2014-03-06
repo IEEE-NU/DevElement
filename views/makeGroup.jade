@@ -52,9 +52,13 @@ block content
               li: p Location:
                 b  #{group.meetingLocation}
               li: p Meeting Time:
-                b  #{group.meetingTime}
+                b  #{group.meetingTime[1]}
                 |  on
-                b #{group.meetingDate}
+                b #{group.meetingTime[0]}
               li: p Members:
                 for item in group.members
+<<<<<<< HEAD
                   b  #{item.email} 
+=======
+                  b  #{item.email}  
+>>>>>>> f4ebacfd63e1c6e54a90f4614ff5e611bb95e7bc

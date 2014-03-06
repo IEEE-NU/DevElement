@@ -64,12 +64,12 @@ block content
                 li: p Location:
                   b  #{item.meetingLocation}
                 li: p Meeting Time:
-                  b  #{item.meetingTime}
+                  b  #{item.meetingTime[1]}
                   |  on 
-                  b  #{item.meetingDate}
+                  b  #{item.meetingTime[0]}
                 li: p Members:
                   for i in item.members
-                    b #{i.email} 
+                    b  #{i.email} 
   else
     if typeof(groups) !== 'undefined' && groups !== ""
       h3 Results
@@ -80,9 +80,9 @@ block content
                 li: p Location:
                   b  #{groups.meetingLocation}
                 li: p Meeting Time:
-                  b  #{groups.meetingTime}
+                  b  #{groups.meetingTime[1]}
                   |  on 
-                  b  #{groups.meetingDate}
+                  b  #{groups.meetingTime[0]}
                 li: p Members:
                   for i in groups.members
-                    b #{i.email} 
+                    b  #{i.email} 
